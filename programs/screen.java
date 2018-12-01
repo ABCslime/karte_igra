@@ -45,6 +45,7 @@ public class screen extends JFrame {
             g.setColor(Color.black);    // set the drawing color
             g.drawLine(0, 400, x, 400);
             g.drawLine(100, 400, x, 400);
+            g.drawLine(100, 400, x, 400);
 
 
 
