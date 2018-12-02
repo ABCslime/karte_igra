@@ -5,62 +5,45 @@ import javax.swing.*;    // Using Swing's components and containers
 
 
 public class screen extends JFrame {
-    public static int x = 640;
-    public static int y =480;
+    public static int x = 100;
+    public static int y = 1;
 
-    public static final int WIDTH  = x;
-    public static final int HEIGHT = y;
-
-
-    private DrawCanvas canvas;
+    static JFrame frame = new JFrame();
+    public static Graphics2D g2d;
 
 
     public screen() {
-        canvas = new DrawCanvas();
-        canvas.setPreferredSize(new Dimension(WIDTH, HEIGHT));
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        final int WIDTH = dim.width;
+        final int HEIGHT = dim.height;
 
 
-        Container cp = getContentPane();
-        cp.add(canvas);
+        //Create a JFrame
 
 
-        setDefaultCloseOperation(EXIT_ON_CLOSE);   // Handle the CLOSE button
-        pack();              // Either pack() the components; or setSize()
-        setTitle("0.1");  // "super" JFrame sets the title
-        setVisible(true);    // "super" JFrame show
+        frame.setSize(new Dimension(WIDTH, HEIGHT));
+
+
+        //set properties for the JFrame
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setExtendedState(Frame.MAXIMIZED_BOTH);
+        frame.setUndecorated(false);
+
+        frame.setVisible(true);
+        frame.setContentPane(new mainevent.DrawPane());
+
     }
 
-    /**
-     * Define inner class DrawCanvas, which is a JPanel used for custom drawing.
-     */
-    private class DrawCanvas extends JPanel {
-        // Override paintComponent to perform your own painting
-        @Override
-        public void paintComponent(Graphics g) {
-            super.paintComponent(g);     // paint parent's background
-            setBackground(Color.WHITE);  // set background color for this JPanel
-
-            // Your custom painting codes. For example,
-            // Drawing primitive shapes
-            g.setColor(Color.black);    // set the drawing color
-            g.drawLine(0, 400, x, 400);
-            g.drawLine(100, 400, x, 400);
-            g.drawLine(100, 400, x, 400);
-            g.drawLine(100, 400, x, 400);
-
-
-
-        }
-    }
 
     // The entry main method
     public static void main(String[] args) {
-        // Run the GUI codes on the Event-Dispatching thread for thread safety
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new screen(); // Let the constructor do the job
-            }
-        });
+        new screen();
+
+
+
     }
+
+
 }
+
+
