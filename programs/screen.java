@@ -25,9 +25,10 @@ public class screen extends JFrame {
 
 
         //set properties for the JFrame
+
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setExtendedState(Frame.MAXIMIZED_BOTH);
-        frame.setUndecorated(false);
+        frame.setUndecorated(true);
 
         frame.setVisible(true);
         frame.setContentPane(new mainevent.DrawPane());
